@@ -15,7 +15,6 @@
 		_YouCompleteMe_  -- Completion support
 		_vimcolorschemes_-- All the color schemes
 ### System Helpful Commands (.bashrc contents)
-		```
 		# Handle fusion's unwieldly directory structure
 		function fusionDirectoryMadnessSolution() {
 			declare -a arr=("higgs" "heisenberg" "tachyon-storage" "chronotrack-protocols" "tachyon")
@@ -44,15 +43,13 @@
 			fusionDirectoryMadnessSolution
 
 		}
-		```
 
 ### Installation Guide
-	1) Download and extract Eclipse .tar.gz file to $HOME/eclipse
-	2) Download and Install Vim (`sudo apt-get install vim`)
-	3) Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
-	4) Install Vundle for vim with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-	5) Add to `$HOME/.vimrc`:
-		```
+1) Download and extract Eclipse .tar.gz file to $HOME/eclipse
+2) Download and Install Vim (`sudo apt-get install vim`)
+3) Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
+4) Install Vundle for vim with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+5) Add to `$HOME/.vimrc`:
 		set nocompatible              " be iMproved, required
 		filetype off                  " required
 
@@ -80,25 +77,18 @@
 		"
 		" see :h vundle for more details or wiki for FAQ
 		" Put your non-Plugin stuff after this line
-		```
-	6) Install Pathogen with 
-	```
-		mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-		curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-	```
-	7) Run this `echo "execute pathogen#infect()" >> $HOME/.vimrc` to add pathogen infection to `$HOME/.vimrc`
-	8) Install VIM Plugins by adding these lines to your `$HOME/.vimrc`
-	```
-		Plugin 'derekwyatt/vim-scala'
-		Plugin 'ervandew/supertab'
-		Plugin 'Valloric/YouCompleteMe'
-		Plugin 'flazz/vim-colorschemes'
-	```
-	9) Install NERDtree
-	```
-		cd ~/.vim/bundle
-		git clone https://github.com/scrooloose/nerdtree.git
-	```
-	10) Install all plugins. Inside of VIM run `:PluginInstall`
-	11) To generate eclipse project from source files, run `cfv` from above.
-	12) To import your new project into vim, run `:ProjectImportDiscover ~/Git`
+6) Install Pathogen with 
+	mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+7) Run this `echo "execute pathogen#infect()" >> $HOME/.vimrc` to add pathogen infection to `$HOME/.vimrc`
+8) Install VIM Plugins by adding these lines to your `$HOME/.vimrc`
+	Plugin 'derekwyatt/vim-scala'
+	Plugin 'ervandew/supertab'
+	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'flazz/vim-colorschemes'
+9) Install NERDtree
+	cd ~/.vim/bundle
+	git clone https://github.com/scrooloose/nerdtree.git
+10) Install all plugins. Inside of VIM run `:PluginInstall`
+11) To generate eclipse project from source files, run `cfv` from above.
+12) To import your new project into vim, run `:ProjectImportDiscover ~/Git`
