@@ -102,5 +102,5 @@
 11. To generate eclipse project from source files, run `cfv` from above.
 12. To import your new project into vim, run `:ProjectImportDiscover ~/Git`
 
-# For an up-to-date version of my current vim settings, please refer to `./vimrc` in the repo 
+# For an up-to-date version of my current vim settings, please refer to `./.vimrc` in the repo 
 
