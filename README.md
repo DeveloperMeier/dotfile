@@ -128,6 +128,7 @@ filetype plugin indent on    " required
 	cd ~/.vim/bundle
 	git clone https://github.com/scrooloose/nerdtree.git
 ```
+15. Install sbt-eclipse plugin in `~/.sbt/0.13/plugins/plugins.sbt` with `addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")`
 15. Install all plugins. Inside of VIM run `:PluginInstall`
 16. To generate eclipse project from source files, run `cfv` from above.
 17. To import your new project into vim, run `:ProjectImportDiscover ~/Git`
