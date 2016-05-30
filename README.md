@@ -61,11 +61,25 @@ function rsbt() {
 }
 
 ```
-1. Download and extract Eclipse .tar.gz file to $HOME/eclipse
-2. Download and Install Vim (`sudo apt-get install vim`) (For python support on Ubuntu 16.04+ do `sudo apt-get install gnome-vim`)
-3. Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
-4. Install Vundle for vim with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-5. Add to `$HOME/.vimrc`:
+5. Install SBT/Scala:
+```
+	sudo apt-get remove scala-library scala
+	wget http://www.scala-lang.org/files/archive/scala-2.11.6.deb
+	sudo dpkg -i scala-2.11.6.deb
+	sudo apt-get update
+	sudo apt-get install scala
+
+	echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
+	sudo apt-get update
+	sudo apt-get install sbt
+
+	```
+6. Download and extract Eclipse .tar.gz file to $HOME/eclipse
+7. Download and Install Vim (`sudo apt-get install vim`) (For python support on Ubuntu 16.04+ do `sudo apt-get install gnome-vim`)
+8. Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
+9. Install Vundle for vim with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+10. Add to `$HOME/.vimrc`:
 
 
 		set nocompatible              " be iMproved, required
@@ -96,27 +110,27 @@ function rsbt() {
 		" see :h vundle for more details or wiki for FAQ
 		" Put your non-Plugin stuff after this line
 
-6. Install Pathogen with 
+11. Install Pathogen with 
 ```
 	mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
-7. Run this `echo "execute pathogen#infect()" >> $HOME/.vimrc` to add pathogen infection to `$HOME/.vimrc`
-8. Install VIM Plugins by adding these lines to your `$HOME/.vimrc`
+12. Run this `echo "execute pathogen#infect()" >> $HOME/.vimrc` to add pathogen infection to `$HOME/.vimrc`
+13. Install VIM Plugins by adding these lines to your `$HOME/.vimrc`
 ```
 	Plugin 'derekwyatt/vim-scala'
 	Plugin 'ervandew/supertab'
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'flazz/vim-colorschemes'
 ```
-9. Install NERDtree
+14. Install NERDtree
 ```
 	cd ~/.vim/bundle
 	git clone https://github.com/scrooloose/nerdtree.git
 ```
-10. Install all plugins. Inside of VIM run `:PluginInstall`
-11. To generate eclipse project from source files, run `cfv` from above.
-12. To import your new project into vim, run `:ProjectImportDiscover ~/Git`
+15. Install all plugins. Inside of VIM run `:PluginInstall`
+16. To generate eclipse project from source files, run `cfv` from above.
+17. To import your new project into vim, run `:ProjectImportDiscover ~/Git`
 
 # For an up-to-date version of my current vim settings, please refer to `./.vimrc` in the repo 
 
