@@ -45,8 +45,24 @@
 		}
 
 ### Installation Guide
+1. Install java 8:
+```
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java8-installer
+```
+2. Put `sbt-launch.jar` in `~/bin`
+3. Add `~/bin` to `PATH` via `.bashrc` if not already there --> `echo "export PATH=$PATH:$HOME/bin" >> $HOME/.bashrc`
+4. Add this function to`~/.bashrc` and source it
+```
+function rsbt() {
+	export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+	java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@"
+}
+
+```
 1. Download and extract Eclipse .tar.gz file to $HOME/eclipse
-2. Download and Install Vim (`sudo apt-get install vim`)
+2. Download and Install Vim (`sudo apt-get install vim`) (For python support on Ubuntu 16.04+ do `sudo apt-get install gnome-vim`)
 3. Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
 4. Install Vundle for vim with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 5. Add to `$HOME/.vimrc`:
