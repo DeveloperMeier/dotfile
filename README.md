@@ -74,7 +74,7 @@ function rsbt() {
 	sudo apt-get update
 	sudo apt-get install sbt
 
-	```
+```
 6. Download and extract Eclipse .tar.gz file to $HOME/eclipse
 7. Download and Install Vim (`sudo apt-get install vim`) (For python support on Ubuntu 16.04+ do `sudo apt-get install gnome-vim`)
 8. Download and run Eclim (Wizard will ask for the new eclipse folder, and some basic JDK setup questions)
