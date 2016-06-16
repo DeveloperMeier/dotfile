@@ -4,12 +4,13 @@ filetype off                  " required
 set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
-set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags
-
+set mouse=a
+set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags,.tags,~/Git/tachyon-web/.tags
 set number
 set relativenumber
-
+set shortmess=a
+set cmdheight=3
+"hi Normal ctermbg=none
 
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -33,10 +34,39 @@ Plugin 'FuzzyFinder'
 Plugin 'bling/vim-bufferline'
 Plugin 'powerline/powerline'
 Plugin 'Conque-GDB'
+Plugin 'pangloss/vim-javascript'
+Plugin 'webdevel/tabulous'
+Plugin 'ap/vim-buftabline'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mxw/vim-jsx'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/html5.vim'
+Plugin 'othree/html5-syntax.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jaxbot/syntastic-react'
+Plugin 'scrooloose/nerdtree'
+Plugin 'derekwyatt/vim-sbt'
+
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+
+let g:jsx_ext_required = 0
+let g:used_javascript_libs = 'underscore,angularjs,jasmine,chai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -50,6 +80,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 execute pathogen#infect()
 call pathogen#helptags()
+let mapleader=","
 silent! map <F2> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
@@ -64,6 +95,7 @@ au! Syntax scala source ~/.vim/syntax/scala.vim
 silent! map <F4> :ProjectProblems! <CR>
 noremap <C-]> <C-]>:tl<CR>
 silent! nmap <C-p> :CtrlP<CR>
+silent! nmap <Leader>b :CtrlPBuffer<CR>
 
 "Airline Settings"
 let g:airline#extensions#tabline#enabled = 1
@@ -85,6 +117,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "Custom Commands"
 noremap <C-z> :! source ~/.bashrc && cfv<CR>
+nmap <Leader>j :bn<CR>
+nmap <Leader>k :bp<CR>
 
 
-
+filetype plugin on
+set runtimepath^=~/.vim/bundle/tabulous
