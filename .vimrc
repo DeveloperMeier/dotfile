@@ -11,7 +11,6 @@ set relativenumber
 set shortmess=a
 set cmdheight=3
 "hi Normal ctermbg=none
-
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -49,6 +48,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'jaxbot/syntastic-react'
 Plugin 'scrooloose/nerdtree'
 Plugin 'derekwyatt/vim-sbt'
+Plugin 'gre/play2vim'
 
 
 let g:syntastic_javascript_checkers = ['eslint']
@@ -59,6 +59,8 @@ let g:used_javascript_libs = 'underscore,angularjs,jasmine,chai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+color PaperColor
+
 filetype plugin indent on    " required
 
 " show existing tab with 4 spaces width
@@ -123,3 +125,5 @@ nmap <Leader>k :bp<CR>
 
 filetype plugin on
 set runtimepath^=~/.vim/bundle/tabulous
+
+
