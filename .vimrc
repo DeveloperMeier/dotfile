@@ -5,11 +5,22 @@ set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set mouse=a
-set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags,.tags,~/Git/tachyon-web/.tags
+set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags,.tags,~/Git/tachyon-web/.tags,~/Git/jajvam/.tags,~/Git/jajvam-web/.tags
 set number
 set relativenumber
 set shortmess=a
 set cmdheight=3
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=M  "remove system toolbar
+set guioptions+=a  "Global windowing access
+set nobackup       "no backup files
+set nowritebackup  "only in case you don't want a backup file while editing
+set noswapfile     "no swap fileswset noswapfile
+
+":set guioptions-=r  "remove right-hand scroll bar
+":set guioptions-=L  "remove left-hand scroll bar<
 "hi Normal ctermbg=none
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
