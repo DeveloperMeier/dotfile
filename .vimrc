@@ -5,7 +5,8 @@ set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set mouse=a
-set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags,.tags,~/Git/tachyon-web/.tags,~/Git/jajvam/.tags,~/Git/jajvam-web/.tags
+"set tags=~/Git/tachyon/.tags,~/Git/higgs/.tags,~/Git/heisenberg/.tags,~/Git/tachyon-storage/.tags,~/Git/chronotrack-protocols/.tags,.tags,~/Git/tachyon-web/.tags,~/Git/jajvam/.tags,~/Git/jajvam-web/.tags
+set tags=~/Git/Projects/Jajvam/jajvam/.tags,~/Git/Projects/Jajvam/jajvam-web/.tags,~/Git/Projects/Jajvam/ares/.tags
 set number
 set relativenumber
 set shortmess=a
@@ -25,6 +26,7 @@ set noswapfile     "no swap fileswset noswapfile
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+let g:jsx_ext_required = 0
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -34,7 +36,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'craigemery/vim-autotag'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -60,17 +62,32 @@ Plugin 'jaxbot/syntastic-react'
 Plugin 'scrooloose/nerdtree'
 Plugin 'derekwyatt/vim-sbt'
 Plugin 'gre/play2vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'spiroid/vim-ultisnip-scala'
+
+"map <C-p> [unite]p
+" open ctag in tab/vertical split
+map <C-\> :split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <leader>\ :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 let g:syntastic_javascript_checkers = ['eslint']
 
+set nowrap
+
 
 let g:jsx_ext_required = 0
-let g:used_javascript_libs = 'underscore,angularjs,jasmine,chai'
+let g:used_javascript_libs = 'react,underscore,angularjs,jasmine,chai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-color PaperColor
+color Monokai
+hi normal ctermbg=16 ctermfg=214 guifg=214 guibg=16
+hi NonText ctermfg=214 ctermbg=16 guifg=214 guibg=16
+
+set background=dark
 
 filetype plugin indent on    " required
 
@@ -95,20 +112,20 @@ execute pathogen#infect()
 call pathogen#helptags()
 let mapleader=","
 silent! map <F2> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
-let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapActivateNode="<F6>"
 let g:NERDTreeMapPreview="<F4>"
 let g:EclimCompletionMethod = 'omnifunc'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/target/*,*.swo,*.swp,*/dist/*,*/node_modules/*,*/lib/*,*/export/*,/bin/*,*.class
-let g:ctrlp_working_path_mode = '~/Git'
+let g:ctrlp_working_path_mode = '~/Git/Projects'
 au BufRead,BufNewFile *.scala set filetype=scala
 au! Syntax scala source ~/.vim/syntax/scala.vim
 silent! map <F4> :ProjectProblems! <CR>
 noremap <C-]> <C-]>:tl<CR>
-silent! nmap <C-p> :CtrlP<CR>
-silent! nmap <Leader>b :CtrlPBuffer<CR>
+noremap <Leader>t :tags<CR>
+"silent! nmap <C-p> :CtrlP ~/Git/Projects<CR>
+"silent! nmap <Leader>b :CtrlPBuffer<CR>
 
 "Airline Settings"
 let g:airline#extensions#tabline#enabled = 1
@@ -132,9 +149,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 noremap <C-z> :! source ~/.bashrc && cfv<CR>
 nmap <Leader>j :bn<CR>
 nmap <Leader>k :bp<CR>
-
+noremap <C-o> :ScalaImport<CR>
+nnoremap <C-]> g<C-]>
+noremap <C-=> :TagbarShowTab<CR>
 
 filetype plugin on
 set runtimepath^=~/.vim/bundle/tabulous
-
 
