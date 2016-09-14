@@ -66,6 +66,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'spiroid/vim-ultisnip-scala'
+Plugin 'kien/ctrlp.vim'
+Plugin 'takac/vim-spotifysearch'
+Plugin 'tommorris/scala-vim-snippets'
 
 "map <C-p> [unite]p
 " open ctag in tab/vertical split
@@ -151,7 +154,12 @@ nmap <Leader>j :bn<CR>
 nmap <Leader>k :bp<CR>
 noremap <C-o> :ScalaImport<CR>
 nnoremap <C-]> g<C-]>
-noremap <C-=> :TagbarShowTab<CR>
+noremap <C-=> :TagbarShowTag<CR>
+noremap <C-b> :BuffersToggle<CR>
+
+function! s:GrepFor (text)
+    return vimgrep /text/g % | copen
+endfunction
 
 filetype plugin on
 set runtimepath^=~/.vim/bundle/tabulous

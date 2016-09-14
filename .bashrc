@@ -113,15 +113,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="/home/cmeier/.nvm"
+export NVM_DIR="/home/cheezy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH=$PATH:/home/cmeier/Git/dev-tools/scripts:/home/cmeier/bin
+export PATH=$PATH:/home/cheezy/Git/dev-tools/scripts:/home/cheezy/bin
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export GIT_HOME=/home/cmeier/Git
+export GIT_HOME=/home/cheezy/Git
 
-export GIT_TOP=/home/cmeier/Git
-declare -a arr=("heisenberg"  "higgs"  "chronotrack-protocols" "tachyon-storage" "tachyon")
+export GIT_TOP=/home/cheezy/Git
+declare -a arr=("heisenberg"  "higgs"  "chronotrack-protocols" "tachyon-storage" "tachyon" "jxbrowser-provider" "lifepoint")
+
+function toFile() {
+    $1 | tee $2
+}
+
+function jrun() {
+    cd $GIT_TOP/jajvam
+    sbt run &
+    cd ../jajvam-web
+    npm install
+    npm run dev
+}
 
 function fusionDirectoryMadnessSolution() {
 	for i in "${arr[@]}"
@@ -138,16 +150,21 @@ function doInEachDir() {
 	done
 }
 
+function bchrono() {
+    $HOME/Git/dev-tools/scripts/chrono run &> ~/log.txt &
+}
+
 
 function eclim() {
-	$HOME/eclipse/eclimd
+    Xvfb :1 -screen 0 1024x768x24 &
+    DISPLAY=:1 $HOME/eclipse/eclimd -b
 }
 
 function genTags() {
-	cd "$HOME/Git/$1" && sbt clean gen-ctags eclipse test coverage coverageReport
+	cd "$HOME/Git/$1" && sbt clean compile gen-ctags eclipse publishLocal
 }
 
-function cfv() {
+function cfvFunc() {
 	fusionDirectoryMadnessSolution
 }
 
@@ -155,3 +172,45 @@ function stream() {
 	livestreamer http://www.twitch.tv/$1 best
 }
 
+function jtags() {
+    cd $HOME/Git/Projects/Jajvam/jajvam
+    sbt eclipse gen-ctags
+    cd ../jajvam-web
+    ctags --language-force=js src/**/*.js
+    cd ../ares/
+    sbt eclipse gen-ctags
+}
+
+PATH="/home/cheezy/.conscript/bin:$PATH"
+
+function g() {
+    git $1
+}
+
+function pull() {
+    g pull origin $1
+}
+
+function merge() {
+    g pull -r origin $1
+}
+
+function push() {
+    g push origin $1
+}
+
+function cdj() {
+    cd "$HOME/Git/Projects/Jajvam/$1"
+}
+
+function jkafka() {
+    docker-compose $(./listyml) up perseus-ctlive-kafka-event
+}
+
+function sledge() {
+    docker rm -f $(docker ps -aq)
+}
+
+function vws() {
+    vim -S "$HOME/sessions/US$1"
+}
