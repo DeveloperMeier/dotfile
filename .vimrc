@@ -69,6 +69,10 @@ Plugin 'spiroid/vim-ultisnip-scala'
 Plugin 'kien/ctrlp.vim'
 Plugin 'takac/vim-spotifysearch'
 Plugin 'tommorris/scala-vim-snippets'
+Plugin 'honza/vim-snippets'
+Plugin 'moll/vim-node'
+Plugin 'SirVer/ultisnips'
+
 
 "map <C-p> [unite]p
 " open ctag in tab/vertical split

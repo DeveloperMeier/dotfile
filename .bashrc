@@ -214,3 +214,8 @@ function sledge() {
 function vws() {
     vim -S "$HOME/sessions/US$1"
 }
+
+function a() {
+    tmux -2 a -t "$1" || tmux -2 new -t "$1"
+}
+if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
