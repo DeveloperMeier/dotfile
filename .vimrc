@@ -72,6 +72,8 @@ Plugin 'tommorris/scala-vim-snippets'
 Plugin 'honza/vim-snippets'
 Plugin 'moll/vim-node'
 Plugin 'SirVer/ultisnips'
+Plugin 'FredKSchott/CoVim'
+Plugin 'vim-scripts/groovy.vim'
 
 
 "map <C-p> [unite]p
@@ -167,4 +169,8 @@ endfunction
 
 filetype plugin on
 set runtimepath^=~/.vim/bundle/tabulous
+
+
+let CoVim_default_name = "colby"
+let CoVim_default_port = "9999"
 
