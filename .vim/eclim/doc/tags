@@ -70,6 +70,7 @@
 2.4.0	changes.txt	/*2.4.0*
 2.4.1	changes.txt	/*2.4.1*
 2.5.0	changes.txt	/*2.5.0*
+2.6.0	changes.txt	/*2.6.0*
 404.html	404.txt	/*404.html*
 :AndroidReload	vim/java/android.txt	/*:AndroidReload*
 :Ant	vim/java/ant.txt	/*:Ant*
@@ -259,6 +260,7 @@ development-architecture.html	development/architecture.txt	/*development-archite
 development-commands.html	development/commands.txt	/*development-commands.html*
 development-gettingstarted.html	development/gettingstarted.txt	/*development-gettingstarted.html*
 development-index.html	development/index.txt	/*development-index.html*
+development-installer.html	development/installer.txt	/*development-installer.html*
 development-patches	development/gettingstarted.txt	/*development-patches*
 development-plugins.html	development/plugins.txt	/*development-plugins.html*
 dtd	vim/xml/index.txt	/*dtd*
@@ -276,6 +278,8 @@ eclimd-extdir	eclimd.txt	/*eclimd-extdir*
 eclimd-headed	eclimd.txt	/*eclimd-headed*
 eclimd-headless	eclimd.txt	/*eclimd-headless*
 eclimd-multiworkspace	eclimd.txt	/*eclimd-multiworkspace*
+eclimd-start	eclimd.txt	/*eclimd-start*
+eclimd-stop	eclimd.txt	/*eclimd-stop*
 eclimd.html	eclimd.txt	/*eclimd.html*
 eclimd_options_windows	faq.txt	/*eclimd_options_windows*
 eclimrc	eclimd.txt	/*eclimrc*

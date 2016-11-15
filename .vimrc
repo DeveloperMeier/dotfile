@@ -174,3 +174,5 @@ set runtimepath^=~/.vim/bundle/tabulous
 let CoVim_default_name = "colby"
 let CoVim_default_port = "9999"
 
+au BufNewFile,BufRead *.Jenkinsfile set filetype=groovy  
+autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set filetype=javascript | endif
