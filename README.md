@@ -1,4 +1,8 @@
 # dotfile
+
+# Docker Image
+    docker run -it developermeier/scala bash
+
 ## How to set up VIM to use in lieu of IntelliJ	
 ### Required System Components
 		_CTags_ -- Decompiling for symbol matching
