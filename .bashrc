@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ~/.bashrc: executed by bash(1) for non-login shellsM != "screen" ]] && exec tmux
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -84,6 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -113,109 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="/home/cheezy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+alias cdc="cd /mnt/c"
+alias cde="cd /mnt/e"
+alias cdd="cd /mnt/d"
 
-export PATH=$PATH:/home/cheezy/Git/dev-tools/scripts:/home/cheezy/bin
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export GIT_HOME=/home/cheezy/Git
-
-export GIT_TOP=/home/cheezy/Git
-declare -a arr=("heisenberg"  "higgs"  "chronotrack-protocols" "tachyon-storage" "tachyon" "jxbrowser-provider" "lifepoint")
-
-function toFile() {
-    $1 | tee $2
-}
-
-function jrun() {
-    cd $GIT_TOP/jajvam
-    sbt run &
-    cd ../jajvam-web
-    npm install
-    npm run dev
-}
-
-function fusionDirectoryMadnessSolution() {
-	for i in "${arr[@]}"
-	do
-		genTags "$i"
-	done
-}
-
-function doInEachDir() {
-	for i in "${arr[@]}"
-	do
-		cd "$HOME/Git/$i"
-		exec $1
-	done
-}
-
-function bchrono() {
-    $HOME/Git/dev-tools/scripts/chrono run &> ~/log.txt &
-}
-
-
-function eclim() {
-    Xvfb :1 -screen 0 1024x768x24 &
-    DISPLAY=:1 $HOME/eclipse/eclimd -b
-}
-
-function genTags() {
-	cd "$HOME/Git/$1" && sbt clean compile gen-ctags eclipse publishLocal
-}
-
-function cfvFunc() {
-	fusionDirectoryMadnessSolution
-}
-
-function stream() {
-	livestreamer http://www.twitch.tv/$1 best
-}
-
-function jtags() {
-    cd $HOME/Git/Projects/Jajvam/jajvam
-    sbt eclipse gen-ctags
-    cd ../jajvam-web
-    ctags --language-force=js src/**/*.js
-    cd ../ares/
-    sbt eclipse gen-ctags
-}
-
-PATH="/home/cheezy/.conscript/bin:$PATH"
-
-function g() {
-    git $1
-}
-
-function pull() {
-    g pull origin $1
-}
-
-function merge() {
-    g pull -r origin $1
-}
-
-function push() {
-    g push origin $1
-}
-
-function cdj() {
-    cd "$HOME/Git/Projects/Jajvam/$1"
-}
-
-function jkafka() {
-    docker-compose $(./listyml) up perseus-ctlive-kafka-event
-}
-
-function sledge() {
-    docker rm -f $(docker ps -aq)
-}
-
-function vws() {
-    vim -S "$HOME/sessions/US$1"
-}
-
-function a() {
-    tmux -2 a -t "$1" || tmux -2 new -t "$1"
-}
-if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+[[ $TERM != "screen-256color" ]] && exec tmux
